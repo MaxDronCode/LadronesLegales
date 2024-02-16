@@ -1,27 +1,103 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class Cliente{
+--Atributos--
+-dni:String
+-nombre:String
+-apellido1:String
+-apellido2:String
+--Metodos--
++constructor()
++constructor(dni,nombre,apellido1,apellido2)
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
++getDni():String
++setDni(dni)
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
++getNombre():String
++setNombre(nombre)
 
-class ArrayList {
-Object[] elementData
-size()
++getApellido1():String
++setApellido1(apellido)
+
++getApellido2():String
++setApellido2(apellido)
+
++override toString:String
+}
+abstract CuentaBancaria{
+--Atributos--
+-dataApertura:Fecha
+-nombreCuenta:String
+-saldo:Float
+--Metodos--
++ingresar()
++consultarSaldo()
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class CuentaCorriente{
+--Atributos--
+-comisionMantenimiento:Int
+-override liquidada:Boolean
+-saldo:Float
+--Metodos--
++constructor()
++constructor(comisionMantenimiento, liquidada)
+
++getComisionMantenimiento():Int
++setComisionMantenimiento(comision)
+
++getLiquidada():Boolean
++override liquidar()
+
++retirarDinero(dineroARetirar)
++cobrarComision()
+
++override toString:String
 }
+
+class CuentaAhorro{
+--Atributos--
+-interes:Float
+-override liquidada:Boolean
+-saldo:Float
+--Metodos--
+-override liquidar()
+}
+
+interface Liquidable {
+--Atributos--
+abstract liquidada:Boolean
+--Metodos--
+abstract liquidar()
+}
+
+class Fecha {
+--Atributos--
+-dia:Int
+-mes:Int
+-anyo:Int
+--Metodos--
++getDia():Int
++setDia(dia):Int
++getMes():Int
++setMes(mes)
++getAnyo():Int
++setAnyo(anyo)
+}
+
+
+CuentaBancaria <|-- CuentaAhorro
+CuentaBancaria <|-- CuentaCorriente
+CuentaBancaria *-- Fecha
+
+Liquidable <|.. CuentaAhorro
+Liquidable <|.. CuentaCorriente
+
+Cliente *-- CuentaBancaria
+
+
+
+
 
 @enduml
