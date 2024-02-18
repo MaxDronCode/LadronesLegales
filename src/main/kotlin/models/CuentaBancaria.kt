@@ -1,6 +1,6 @@
 package models
 
-abstract class CuentaBancaria {
+open abstract class CuentaBancaria {
     // Atributos
     protected var dataApertura: Fecha = Fecha.fechaActual()
     protected var saldo: Float = 0f;
@@ -23,6 +23,14 @@ abstract class CuentaBancaria {
 
     fun consultarSaldo():Float {
         return this.saldo
+    }
+    abstract fun cobrarComision(tipo:String)
+
+    override fun toString(): String {
+        return """
+            Número de Cuenta: ${this.nombreCuenta}
+            Data Apertura:    ${this.dataApertura.obtenerFechaComoTexto()}
+        """.trimIndent()
     }
 
 }

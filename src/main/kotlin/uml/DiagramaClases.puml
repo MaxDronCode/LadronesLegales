@@ -49,25 +49,28 @@ abstract CuentaBancaria{
 -setNombreCuenta():String
 +ingresar()
 +consultarSaldo()
+abstract cobrarComision(tipo)
++override toString:String
 }
 
 class CuentaCorriente{
 --Atributos--
 -comisionMantenimiento:Int
 -override liquidada:Boolean
--saldo:Float
 --Metodos--
 +constructor()
-+constructor(comisionMantenimiento, liquidada)
 
 +getComisionMantenimiento():Int
 +setComisionMantenimiento(comision)
 
++retirarDinero(dineroARetirar)
+
 +getLiquidada():Boolean
++setLiquidada(liquidada:Boolean)
+
 +override liquidar()
 
-+retirarDinero(dineroARetirar)
-+cobrarComision()
++override cobrarComision(tipo)
 
 +override toString:String
 }
@@ -75,13 +78,14 @@ class CuentaCorriente{
 class CuentaAhorro{
 --Atributos--
 -interes:Float
--override liquidada:Boolean
--saldo:Float
 --Metodos--
 -override liquidar()
+-override cobrarComision(tipo)
 }
 
 interface Liquidable {
+--Atributos--
+abstract liquidada:Boolean
 --Metodos--
 abstract liquidar()
 }
