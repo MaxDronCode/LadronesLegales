@@ -29,6 +29,13 @@ class CuentaCorriente: CuentaBancaria, Liquidable {
         this.liquidada = liquidada
     }
 
+    override fun ingresar(dinero: Float) {
+        this.saldo += dinero
+    }
+
+    override fun retirar(dinero: Float) {
+        this.saldo -= dinero
+    }
     override fun liquidar() {
         if (!dataApertura.tieneMasDeUnAnio()) cobrarComision("liquidacion")
         retirarDinero(this.saldo)

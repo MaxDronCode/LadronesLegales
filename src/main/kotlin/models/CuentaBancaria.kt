@@ -16,14 +16,11 @@ open abstract class CuentaBancaria {
         var numsCuenta: Array<Int> = Array(10){(0..9).random()}
         return "ES13" + this.codigoBanco + this.codigoSucursal + this.digitosDeControl + numsCuenta.toString()
     }
-
-    fun ingresar(dinero:Float) {
-        this.saldo += dinero
-    }
-
     fun consultarSaldo():Float {
         return this.saldo
     }
+    abstract fun ingresar(dinero:Float)
+    abstract fun retirar(dinero:Float)
     abstract fun cobrarComision(tipo:String)
 
     override fun toString(): String {
