@@ -1,22 +1,34 @@
 @startuml
 'https://plantuml.com/use-case-diagram
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+left to right direction
+package CaixaBankAplicacion {
+usecase "Abrir Cuenta Corriente" as a.c.c
+usecase "Cobrar Comision" as c.c
+usecase "Abrir Cuenta Ahorro" as a.c.a
+usecase "Ingresar Dinero" as i.d
+usecase "Retirar Dinero" as r.d
+usecase "Consultar Saldo" as c.s
+usecase "Liquidar Cuenta" as l.c
+usecase "Iniciar Sesion" as i.s
+}
+:Cliente: as c
+:No Cliente: as n.c
+:Banco: as b
 
-User -> (Start)
-User --> (Use)
+n.c <|-right- c
 
-Admin ---> (Use)
+n.c -down-> a.c.c
+n.c -down-> a.c.a
+c -down-> i.s
+(i.d) .up.> (i.s) : extends
+(r.d) .up.> (i.s) : extends
+(c.s) .up.> (i.s) : extends
+(l.c) .up.> (i.s) : extends
+b -up-> c.c
 
-note right of Admin : This is an example.
 
-note right of (Use)
-A note can also
-be on several lines
-end note
+(a.c.c) ..> (c.c) : includes
+(a.c.a) ..> (c.c) : includes
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
 @enduml
