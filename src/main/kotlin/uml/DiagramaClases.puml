@@ -90,7 +90,7 @@ class CuentaAhorro{
 +getLiquidada():Boolean
 +setLiquidada(liquidada:Boolean)
 
-+generarInteres(interes)
++generarInteres()
 
 +override ingresar(dinero)
 +override retirar(dinero)
