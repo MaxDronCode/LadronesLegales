@@ -3,15 +3,17 @@
 
 class Cliente{
 --Atributos--
+-numCliente:Int
 -dni:String
 -nombre:String
 -apellido1:String
 -apellido2:String
--cuentasCorrientes: List<CuentaCorriente>
--cuentasAhorro: List<CuentaAhorro>
+-cuentas: List<CuentaBancaria>
 --Metodos--
 +constructor()
 +constructor(dni,nombre,apellido1,apellido2)
+
++getNumCliente():Int
 
 +getDni():String
 +setDni(dni)
@@ -24,6 +26,8 @@ class Cliente{
 
 +getApellido2():String
 +setApellido2(apellido)
+
++getTodasCuentas():List<CuentaBancaria>
 
 +getCuentasCorrientes():List<CuentaCorriente>
 +setCuentaCorriente(CuentaCorriente)

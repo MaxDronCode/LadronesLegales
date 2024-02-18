@@ -3,6 +3,7 @@
 
 left to right direction
 package CaixaBankAplicacion {
+usecase "Alta Cliente" as a.c
 usecase "Abrir Cuenta Corriente" as a.c.c
 usecase "Cobrar Comision" as c.c
 usecase "Abrir Cuenta Ahorro" as a.c.a
@@ -11,6 +12,7 @@ usecase "Retirar Dinero" as r.d
 usecase "Consultar Saldo" as c.s
 usecase "Liquidar Cuenta" as l.c
 usecase "Iniciar Sesion" as i.s
+usecase "Listar Cuentas" as li.c
 }
 :Cliente: as c
 :No Cliente: as n.c
@@ -18,14 +20,20 @@ usecase "Iniciar Sesion" as i.s
 
 n.c <|-right- c
 
-n.c -down-> a.c.c
-n.c -down-> a.c.a
+n.c -down-> a.c
+(a.c.c) .up.> a.c : extends
+(a.c.a) .up.> a.c : extends
 c -down-> i.s
 (i.d) .up.> (i.s) : extends
 (r.d) .up.> (i.s) : extends
 (c.s) .up.> (i.s) : extends
 (l.c) .up.> (i.s) : extends
 b -up-> c.c
+
+(l.c) -down-> li.c : includes
+(c.s) -down-> li.c : includes
+(r.d) -down-> li.c : includes
+(i.d) -down-> li.c : includes
 
 
 (a.c.c) ..> (c.c) : includes
