@@ -19,6 +19,7 @@ class Cliente {
     constructor(){}
     constructor(dni:String, nombre:String, apellido1:String, apellido2:String)
 
+    // Métodos
     fun getNumCliente(): Int {
         return this.numCliente
     }
