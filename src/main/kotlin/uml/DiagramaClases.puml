@@ -40,9 +40,13 @@ class Cliente{
 abstract CuentaBancaria{
 --Atributos--
 -dataApertura:Fecha
--nombreCuenta:String
 -saldo:Float
+-codigoBanco:String
+-codigoSucursal:String
+-digitosDeControl:String
+-nombreCuenta:String
 --Metodos--
+-setNombreCuenta():String
 +ingresar()
 +consultarSaldo()
 }
