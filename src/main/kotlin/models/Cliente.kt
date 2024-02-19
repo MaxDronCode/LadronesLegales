@@ -60,8 +60,8 @@ class Cliente {
         for (cuenta in this.cuentas) if (cuenta is CuentaCorriente) cuentasCorrientes.add(cuenta)
         return cuentasCorrientes
     }
-    fun setCuentaCorriente(CuentaCorriente){
-        this.cuentas.add(CuentaCorriente)
+    fun setCuentaCorriente(cuenta:CuentaCorriente){
+        this.cuentas.add(cuenta)
     }
 
     fun getCuentasAhorro(): MutableList<CuentaBancaria> {
@@ -69,8 +69,8 @@ class Cliente {
         for (cuenta in this.cuentas) if (cuenta is CuentaAhorro) cuentasAhorro.add(cuenta)
         return cuentasAhorro
     }
-    fun setCuentaAhorro(CuentaAhorro) {
-        this.cuentas.add(CuentaAhorro)
+    fun setCuentaAhorro(cuenta:CuentaAhorro) {
+        this.cuentas.add(cuenta)
     }
 
     override fun toString(): String {
