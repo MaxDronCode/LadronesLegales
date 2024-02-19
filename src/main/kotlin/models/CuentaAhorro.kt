@@ -7,6 +7,7 @@ class CuentaAhorro: CuentaBancaria, Liquidable {
     // Atributos
     private var interes: Float = 0.04f
     override var liquidada: Boolean = false
+    override var dataLiquidacion: Fecha = Fecha.fechaActual()
 
     // Constructores
     constructor(){}
@@ -66,6 +67,7 @@ class CuentaAhorro: CuentaBancaria, Liquidable {
     override fun liquidar() {
         if (!dataApertura.tieneMasDeUnAnio()) cobrarComision("liquidacion")
         retirar(this.saldo)
+        this.dataLiquidacion = Fecha.fechaActual()
         setLiquidada(true)
     }
 

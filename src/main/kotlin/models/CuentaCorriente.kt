@@ -6,6 +6,8 @@ class CuentaCorriente: CuentaBancaria, Liquidable {
     // Atributos
     private var comisionMantenimiento: Int = 20
     override var liquidada: Boolean = false
+    override var dataLiquidacion: Fecha = Fecha.fechaActual()
+
 
     // Constructores
     constructor(){}
@@ -36,6 +38,7 @@ class CuentaCorriente: CuentaBancaria, Liquidable {
     override fun liquidar() {
         if (!dataApertura.tieneMasDeUnAnio()) cobrarComision("liquidacion")
         retirar(this.saldo)
+        this.dataLiquidacion = Fecha.fechaActual()
         setLiquidada(true)
     }
 

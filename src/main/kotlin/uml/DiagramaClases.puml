@@ -58,6 +58,7 @@ class CuentaCorriente{
 --Atributos--
 -comisionMantenimiento:Int
 -override liquidada:Boolean
+-override dataLiquidacion:Fecha
 --Metodos--
 +constructor()
 
@@ -81,6 +82,7 @@ class CuentaAhorro{
 --Atributos--
 -interes:Float
 -override (liquidada:Boolean)
+-override dataLiquidacion:Fecha
 --Metodos--
 +constructor()
 
@@ -105,6 +107,7 @@ class CuentaAhorro{
 interface Liquidable {
 --Atributos--
 abstract liquidada:Boolean
+abstract dataLiquidacion:Fecha
 --Metodos--
 abstract liquidar()
 }
