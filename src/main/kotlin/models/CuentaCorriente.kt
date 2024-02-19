@@ -18,9 +18,6 @@ class CuentaCorriente: CuentaBancaria, Liquidable {
         this.comisionMantenimiento = comision
     }
 
-    fun retirarDinero(dineroARetirar:Float){
-        this.saldo -= dineroARetirar
-    }
 
     fun getLiquidada():Boolean {
         return this.liquidada
@@ -38,7 +35,7 @@ class CuentaCorriente: CuentaBancaria, Liquidable {
     }
     override fun liquidar() {
         if (!dataApertura.tieneMasDeUnAnio()) cobrarComision("liquidacion")
-        retirarDinero(this.saldo)
+        retirar(this.saldo)
         setLiquidada(true)
     }
 
